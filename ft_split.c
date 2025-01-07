@@ -3,106 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: srapaila <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: srapaila <srapaila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:14:12 by srapaila          #+#    #+#             */
-/*   Updated: 2024/11/22 18:14:16 by srapaila         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:08:52 by srapaila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_initiate_vars(size_t *i, int *j, int *start_word)
-{
-	*i = 0;
-	*j = 0;
-	*start_word = -1;
-}
 
-static int	word_count(const char *str, char c)
+static size_t ft_wordcount(char const *s, char c)
 {
-	int	count;
-	int	x;
-
-	count = 0;
-	x = 0;
-	while (*str)
-	{
-		if (*str != c && x == 0)
-		{
-			x = 1;
-			count++;
-		}
-		else if (*str == c)
-			x = 0;
-		str++;
-	}
-	return (count);
-}
-
-static char	*fill_word(const char *str, int start, int end)
-{
-	char	*word;
-	int		i;
+	size_t i;
+	size_t k;
 
 	i = 0;
-	word = ft_calloc((end - start + 1), sizeof(char));
-	if (!word)
-		return (NULL);
-	while (start < end)
+	k = 0;
+	while (s[i])
 	{
-		word[i] = str[start];
+		if((i == 0 && s[i] != c) ||
+			(s[i] == c && s[i + 1] != '\0' && s[i + 1] != c))
+				k++;
 		i++;
-		start++;
 	}
-	word[i] = 0;
-	return (word);
+	return (k);
 }
-
-static void	*ft_free(char **str, int count)
+static char *ft_strndup(const char *s, size_t n)
 {
-	int	i;
+    char *ris;
+    size_t i;
+    
+    i = 0;
+    ris = NULL;
+    if(n == 0)
+        return (NULL);
+    ris = (char *)malloc(sizeof(char) * n + 1);
+    if(ris == 0)
+        return (NULL);
+    while(i < n)
+    {
+        ris[i] = s[i];
+        i++;
+    }
+    ris[i] = '\0';
+    return (ris);
+}
+static char **ft_free(char **s)
+{
+    size_t i;
 
-	i = 0;
-	while (i < count)
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-	return (NULL);
+    i = 0;
+    while (s[i])
+    {
+        free(s[i]);
+        i++;
+    }
+    free(s);
+    return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**res;
-	size_t	i;
-	int		j;
-	int		start_word;
 
-	ft_initiate_vars(&i, &j, &start_word);
-	res = ft_calloc((word_count(s, c) + 1), sizeof(char *));
-	if (!res)
-		return (NULL);
-	while (i <= ft_strlen(s))
-	{
-		if (s[i] != c && start_word < 0)
-			start_word = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && start_word >= 0)
-		{
-			res[j] = fill_word(s, start_word, i);
-			if (!(res[j]))
-				return (ft_free(res, j));
-			start_word = -1;
-			j++;
-		}
-		i++;
-	}
-	return (res);
+	char **ris;
+    size_t tmp;
+	size_t i;
+	size_t k;
+
+    i = 0;
+    k = 0;
+	ris = (char**) malloc(sizeof(char) * (ft_wordcount(s, c) + 1));
+    if(!ris)
+        return(NULL);
+    while (i < ft_wordcount(s, c) && s[k] != '\0')
+    {
+        while (s[k] == c)
+            k++;
+        tmp = k;
+        while(s[k] != c && s[k] != '\0')
+            k++;
+        ris[i] = ft_strndup(&s[tmp], k - tmp);
+        if (ris[i++] == 0)
+            return (ft_free(ris));
+        i++;
+    }
+    ris[i] = NULL;
+    return (ris);
 }
 
-/*
-int   main(void)
+int main()
+{
+	char *s = "";
+	int i;
+
+	i = ft_wordcount(s, ';');
+    printf("%s", s);
+	printf("%d", i);
+	return (0);
+}
+
+
+
+/* int   main(void)
 {
     const char *s1 = "Ciao sono un cane";
     const char *s2 = "   leading and trailing spaces   ";
@@ -139,4 +142,4 @@ int   main(void)
     printf("\n");
     free(ptr);
     return (0);
-}*/
+} */

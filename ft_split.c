@@ -6,7 +6,7 @@
 /*   By: srapaila <srapaila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:14:12 by srapaila          #+#    #+#             */
-/*   Updated: 2024/12/26 19:08:52 by srapaila         ###   ########.fr       */
+/*   Updated: 2025/01/07 13:30:44 by srapaila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,54 +92,4 @@ char	**ft_split(char const *s, char c)
     return (ris);
 }
 
-int main()
-{
-	char *s = "";
-	int i;
 
-	i = ft_wordcount(s, ';');
-    printf("%s", s);
-	printf("%d", i);
-	return (0);
-}
-
-
-
-/* int   main(void)
-{
-    const char *s1 = "Ciao sono un cane";
-    const char *s2 = "   leading and trailing spaces   ";
-    const char *s3 = "only_one_word";
-    const char *s4 = "";
-    const char *s5 = ";;;;;split;by;semicolon;;;;;";
-    char **ptr;
-    int i;
-    
-    i = 0;
-    ptr = ft_split(s1,' ');
-    for (i = 0; ptr[i]; i++)
-        printf("Word %d: %s\n", i, ptr[i]);
-    printf("\n");
-    free(ptr);
-    ptr = ft_split(s2,' ');
-    for (i = 0; ptr[i]; i++)
-        printf("Word %d: %s\n", i, ptr[i]);
-    printf("\n");
-    free(ptr);
-    ptr = ft_split(s3,' ');
-    for (i = 0; ptr[i]; i++)
-        printf("Word %d: %s\n", i, ptr[i]);
-    printf("\n");
-    free(ptr);
-    ptr = ft_split(s4,' ');
-    for (i = 0; ptr[i]; i++)
-        printf("Word %d: %s\n", i, ptr[i]);
-    printf("\n");
-    free(ptr);
-    ptr = ft_split(s5,';');
-    for (i = 0; ptr[i]; i++)
-        printf("Word %d: %s\n", i, ptr[i]);
-    printf("\n");
-    free(ptr);
-    return (0);
-} */

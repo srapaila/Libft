@@ -6,7 +6,7 @@
 /*   By: srapaila <srapaila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 20:05:38 by srapaila          #+#    #+#             */
-/*   Updated: 2024/11/25 17:26:37 by srapaila         ###   ########.fr       */
+/*   Updated: 2025/01/30 23:08:25 by srapaila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stddef.h>
 # include <ctype.h>
 # include <stdlib.h>
+# include "ft_printf/ft_printf.h"
 
 typedef struct s_list
 {

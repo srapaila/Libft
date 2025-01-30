@@ -6,7 +6,7 @@
 /*   By: srapaila <srapaila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:58:24 by srapaila          #+#    #+#             */
-/*   Updated: 2024/11/25 17:24:37 by srapaila         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:50:32 by srapaila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ int	ft_atoi(const char *str)
 	}
 	return (num * sign);
 }
-/*
-int	main()
-{
-	char str[] = "    +11aa";
-	int x, y;
 
-	x = ft_atoi(str);
-	y = atoi(str);
+// int	main()
+// {
+// 	char str[] = "    +11aa";
+// 	int x, y;
 
-	printf("%d\n", x);
-	printf("%d", y);
-	return (0);
-}*/
+// 	x = ft_atoi(str);
+// 	y = atoi(str);
+
+// 	printf("%d\n", x);
+// 	printf("%d", y);
+// 	return (0);
+// }

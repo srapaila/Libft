@@ -86,7 +86,6 @@ char	**ft_split(char const *s, char c)
         ris[i] = ft_strndup(&s[tmp], k - tmp);
         if (ris[i++] == 0)
             return (ft_free(ris));
-        i++;
     }
     ris[i] = NULL;
     return (ris);
